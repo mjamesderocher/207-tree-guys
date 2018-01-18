@@ -1,3 +1,29 @@
-p {
-  color: black;
+@mixin responsive-background($url) {
+  background-image: url($url + '?w=300');
+  @media screen and (max-width: 2000px) {
+    background-image: url($url + '?w=2000');
+  }
+  @media screen and (max-width: 1600px) {
+    background-image: url($url + '?w=1600');
+  }
+  @media screen and (max-width: 1200px) {
+    background-image: url($url + '?w=1200');
+  }
+  @media screen and (max-width: 800px) {
+    background-image: url($url + '?w=800');
+  }
+  @media screen and (max-width: 600px) {
+    background-image: url($url + '?w=600');
+  }
+  @media screen and (max-width: 500px) {
+    background-image: url($url + '?w=500');
+  }
+}
+
+section {
+  min-height: 100vh;
+}
+
+#hero {
+  @include responsive-background('https://207.imgix.net/silhouette.jpg')
 }

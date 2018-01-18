@@ -12,6 +12,7 @@ gulp.task('sass', function () {
  
 gulp.task('sass:watch', function () {
   gulp.watch('./*.scss', gulp.series('sass'));
+  gulp.watch('./index.html', gulp.series('critical'));
 });
 
 gulp.task('critical', gulp.series('sass', function(done) {
