@@ -1,0 +1,24 @@
+{
+  "name": "207-tree-guys",
+  "version": "1.0.0",
+  "description": "Site for 207TreeGuys",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjamesderocher/207-tree-guys.git"
+  },
+  "author": "Matt Derocher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjamesderocher/207-tree-guys/issues"
+  },
+  "homepage": "https://github.com/mjamesderocher/207-tree-guys#readme",
+  "devDependencies": {
+    "critical": "^1.1.0",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^3.1.0"
+  }
+}
