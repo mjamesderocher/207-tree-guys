@@ -15,7 +15,13 @@ gulp.task('sass:watch', function () {
   gulp.watch('./index.html', gulp.series('critical'));
 });
 
-gulp.task('critical', gulp.series('sass', function(done) {
+gulp.task('copy', function (done) {
+  gulp.src('./images/*.jpg')
+      .pipe(gulp.dest('./dist/images/'));
+  done();
+});
+
+gulp.task('critical', gulp.series('sass', 'copy', function(done) {
   critical.generate({
       inline: true,
       src: 'index.html',
