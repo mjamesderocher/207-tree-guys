@@ -65,20 +65,32 @@ $font-body:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 body {
   margin: 0;
   font-family: $font-body;
+  color: $color-neutral;
 }
 
 h1 {
   margin: 0;
   font-family: $font-heading;
   font-size: 3rem;
-  color: $color-accent;
+  background-color: rgba($color-accent, .7);
+  display: inline;
+  color: $color-light;
+  max-width: 40rem;
+  line-height: 1.4;
+  padding: .2rem .5rem;
 }
+
 h2 {
+  margin: 0;
   font-family: $font-heading;
+  background-color: $color-accent;
+  color: $color-light;
+  padding: .2rem .5rem;
 }
 
 h3 {
   font-family: $font-heading;
+  color: $color-accent;
 }
 
 .point {
@@ -115,13 +127,20 @@ h3 {
   }
 }
 
+.point:nth-of-type(even)::before {
+  order: 1;
+}
+
 #site-header {
+  z-index: 10;
   position: sticky;
   top: 0;
   background-color: $color-light;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+  padding: .4rem 1rem;
 }
 
 .site-header-logo {
@@ -137,12 +156,21 @@ h3 {
   margin-left: 1em;
 }
 
+#site-header-nav a {
+  color: $color-accent;
+  text-decoration: none;
+}
+
 #hero {
   @include responsive-background('https://207.imgix.net/kids-in-forest.jpg', '&crop=entropy');
   min-height: 80vh;
   background-size: cover;
   background-position: 0 50%;
   display: flex;
+  align-items: center;
+  .section-text {
+    background-color: transparent;
+  }
 }
 #mission.point::before {
   @include illustration-background('https://207.imgix.net/caleb.jpg', '&crop=entropy');
@@ -151,10 +179,10 @@ h3 {
   @include illustration-background('https://207.imgix.net/climbing.jpg', '&crop=entropy');
 }
 #pruning.point::before {
-  @include illustration-background('https://207.imgix.net/caleb.jpg', '&crop=entropy');
+  @include illustration-background('https://207.imgix.net/climber.jpg', '&crop=entropy');
 }
 #year-round.point::before {
-  @include illustration-background('https://207.imgix.net/winter-woods.jpg', '&crop=entropy');
+  @include illustration-background('https://207.imgix.net/winter.jpg', '&crop=entropy');
 }
 #green.point::before {
   @include illustration-background('https://207.imgix.net/fire-wood-1.jpg', '&crop=entropy');
