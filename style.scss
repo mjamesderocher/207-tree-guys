@@ -5,24 +5,60 @@ $font-heading: 'Comfortaa', cursive;
 $font-body:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 @mixin responsive-background($url, $pref) {
-  background-image: url($url + '?w=300');
-  @media screen and (max-width: 2000px) {
-    background-image: url($url + '?w=2000' + $pref);
+  background-image: url($url + '?w=500fit=max&auto=format' + $pref);
+  @media screen and (-webkit-min-device-pixel-ratio: 2), 
+    screen and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=500&dpr=2&fit=max&auto=format' + $pref);
   }
-  @media screen and (max-width: 1600px) {
-    background-image: url($url + '?w=1600' + $pref);
+  @media screen and (min-width: 500px) {
+    background-image: url($url + '?w=750fit=max&auto=format' + $pref);
   }
-  @media screen and (max-width: 1200px) {
-    background-image: url($url + '?w=1200' + $pref);
+  @media screen and (min-width: 500px) and (-webkit-min-device-pixel-ratio: 2), 
+    screen and (min-width: 500px) and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=750&dpr=2&fit=max&auto=format' + $pref);
   }
-  @media screen and (max-width: 800px) {
-    background-image: url($url + '?w=800' + $pref);
+  @media screen and (min-width: 750px) {
+    background-image: url($url + '?w=1000fit=max&auto=format' + $pref);
   }
-  @media screen and (max-width: 600px) {
-    background-image: url($url + '?w=600' + $pref);
+  @media screen and (min-width: 750px) and (-webkit-min-device-pixel-ratio: 2), 
+    screen and (min-width: 750px) and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=1000&dpr=2&auto=format' + $pref);
   }
-  @media screen and (max-width: 500px) {
-    background-image: url($url + '?w=500' + $pref);
+  @media screen and (min-width: 1000px) {
+    background-image: url($url + '?w=1250fit=max&auto=format' + $pref);
+  }
+  @media screen and (min-width: 1000px) and (-webkit-min-device-pixel-ratio: 2), 
+    screen and (min-width: 1000px) and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=1000&dpr=2&auto=format' + $pref);
+  }
+  @media screen and (min-width: 1250px) {
+    background-image: url($url + '?w=1600fit=max&auto=format' + $pref);
+  }
+  @media screen and (min-width: 1250px) and (-webkit-min-device-pixel-ratio: 2), 
+    screen and (min-width: 1250px) and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=1000&dpr=2&auto=format' + $pref);
+  }
+  @media screen and (min-width: 1600px) {
+    background-image: url($url + '?w=2000fit=max&auto=format' + $pref);
+  }
+  @media screen and (min-width: 1600px) and (-webkit-min-device-pixel-ratio: 2), 
+    screen and (min-width: 1600px) and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=1000&dpr=2&auto=format' + $pref);
+  }
+  @media screen and (min-width: 2000px) {
+    background-image: url($url + '?w=2400fit=max&auto=format' + $pref);
+  }
+  @media screen and (min-width: 2000px) and (-webkit-min-device-pixel-ratio: 2), 
+    screen and (min-width: 2000px) and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=1000&dpr=2&auto=format' + $pref);
+  }
+}
+
+@mixin illustration-background($url, $pref) {
+  background-image: url($url + '?w=400fit=max&auto=format' + $pref);
+  @media screen and (-webkit-min-device-pixel-ratio: 2), 
+    screen and(min-resolution: 192dpi) {
+      background-image: url($url + '?w=400&dpr=2&fit=max&auto=format' + $pref);
   }
 }
 
@@ -45,14 +81,13 @@ h3 {
   font-family: $font-heading;
 }
 
-section {
+.point {
   min-height: 80vh;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
+  position: relative;
 }
 
 .section-text {
@@ -61,6 +96,23 @@ section {
   padding: 1em;
   margin: 2em;
   max-width: 40rem;
+}
+
+.point::before {
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  @media screen and (min-width: 700px) {
+    position: initial;
+    height: auto;
+    flex: 1 0 40%;
+  }
 }
 
 #site-header {
@@ -86,5 +138,30 @@ section {
 }
 
 #hero {
-  @include responsive-background('https://207.imgix.net/kids-in-forest.jpg', '&crop=entropy')
+  @include responsive-background('https://207.imgix.net/kids-in-forest.jpg', '&crop=entropy');
+  min-height: 80vh;
+  background-size: cover;
+  background-position: 0 50%;
+  display: flex;
+}
+#mission.point::before {
+  @include illustration-background('https://207.imgix.net/caleb.jpg', '&crop=entropy');
+}
+#removal.point::before {
+  @include illustration-background('https://207.imgix.net/climbing.jpg', '&crop=entropy');
+}
+#pruning.point::before {
+  @include illustration-background('https://207.imgix.net/caleb.jpg', '&crop=entropy');
+}
+#year-round.point::before {
+  @include illustration-background('https://207.imgix.net/winter-woods.jpg', '&crop=entropy');
+}
+#green.point::before {
+  @include illustration-background('https://207.imgix.net/fire-wood-1.jpg', '&crop=entropy');
+}
+#about.point::before {
+  @include illustration-background('https://207.imgix.net/silhouette.jpg', '&crop=entropy');
+}
+#contact.point::before {
+  @include illustration-background('https://207.imgix.net/yard.jpg', '&crop=entropy');
 }
