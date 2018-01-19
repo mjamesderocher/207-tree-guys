@@ -46,7 +46,7 @@ h3 {
 }
 
 section {
-  min-height: 100vh;
+  min-height: 80vh;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -54,6 +54,8 @@ section {
   flex-direction: column;
   align-items: flex-start;
 }
+
+#mission 
 
 .section-text {
   background-color: rgba($color-light, .8);
