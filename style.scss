@@ -127,7 +127,7 @@ h3 {
   }
 }
 
-.point:nth-of-type(even)::before {
+.point:nth-of-type(odd)::before {
   order: 1;
 }
 
@@ -189,6 +189,7 @@ h3 {
 }
 #about.point::before {
   @include illustration-background('https://207.imgix.net/silhouette.jpg', '&crop=entropy');
+  order: 1;
 }
 #contact.point::before {
   @include illustration-background('https://207.imgix.net/yard.jpg', '&crop=entropy');
