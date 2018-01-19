@@ -1,29 +1,90 @@
-@mixin responsive-background($url) {
+$color-light: #fff;
+$color-accent: #45B400;
+$color-neutral: #2e2e2e;
+$font-heading: 'Comfortaa', cursive;
+$font-body:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@mixin responsive-background($url, $pref) {
   background-image: url($url + '?w=300');
   @media screen and (max-width: 2000px) {
-    background-image: url($url + '?w=2000');
+    background-image: url($url + '?w=2000' + $pref);
   }
   @media screen and (max-width: 1600px) {
-    background-image: url($url + '?w=1600');
+    background-image: url($url + '?w=1600' + $pref);
   }
   @media screen and (max-width: 1200px) {
-    background-image: url($url + '?w=1200');
+    background-image: url($url + '?w=1200' + $pref);
   }
   @media screen and (max-width: 800px) {
-    background-image: url($url + '?w=800');
+    background-image: url($url + '?w=800' + $pref);
   }
   @media screen and (max-width: 600px) {
-    background-image: url($url + '?w=600');
+    background-image: url($url + '?w=600' + $pref);
   }
   @media screen and (max-width: 500px) {
-    background-image: url($url + '?w=500');
+    background-image: url($url + '?w=500' + $pref);
   }
+}
+
+body {
+  margin: 0;
+  font-family: $font-body;
+}
+
+h1 {
+  margin: 0;
+  font-family: $font-heading;
+  font-size: 3rem;
+  color: $color-accent;
+}
+h2 {
+  font-family: $font-heading;
+}
+
+h3 {
+  font-family: $font-heading;
 }
 
 section {
   min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.section-text {
+  background-color: rgba($color-light, .8);
+  color: $color-neutral;
+  padding: 1em;
+  margin: 2em;
+  max-width: 40rem;
+}
+
+#site-header {
+  position: sticky;
+  top: 0;
+  background-color: $color-light;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.site-header-logo {
+  height: 70px;
+}
+
+#site-header-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+#site-header-nav li + li {
+  margin-left: 1em;
 }
 
 #hero {
-  @include responsive-background('https://207.imgix.net/kids-in-forest.jpg')
+  @include responsive-background('https://207.imgix.net/kids-in-forest.jpg', '&crop=entropy')
 }

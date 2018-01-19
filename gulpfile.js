@@ -16,7 +16,7 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('copy', function (done) {
-  gulp.src('./images/*.jpg')
+  gulp.src('./images/*.{jpg,svg}')
       .pipe(gulp.dest('./dist/images/'));
   done();
 });
