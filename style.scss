@@ -173,7 +173,7 @@ h3 {
   }
 }
 #mission.point::before {
-  @include illustration-background('https://207.imgix.net/caleb.jpg', '&crop=entropy');
+  @include illustration-background('https://207.imgix.net/kneeling.jpg', '&crop=entropy');
 }
 #removal.point::before {
   @include illustration-background('https://207.imgix.net/climbing.jpg', '&crop=entropy');
