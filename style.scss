@@ -62,10 +62,23 @@ $font-body:  "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: $font-body;
   color: $color-neutral;
+  font-size: 18px;
+}
+
+p {
+  line-height: 1.4;
+  margin: 0;
+}
+p + p {
+  margin-top: 1rem;
 }
 
 h1 {
@@ -85,12 +98,16 @@ h2 {
   font-family: $font-heading;
   background-color: $color-accent;
   color: $color-light;
-  padding: .2rem .5rem;
+  padding: 1rem 2rem .4rem;
+  font-size: 2.2rem;
 }
 
 h3 {
   font-family: $font-heading;
   color: $color-accent;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 1rem 2rem .6rem;
 }
 
 .point {
@@ -100,14 +117,28 @@ h3 {
   display: flex;
   justify-content: center;
   position: relative;
+  h2 {
+    margin: 0 0 .8rem;
+  }
 }
 
 .section-text {
-  background-color: rgba($color-light, .8);
   color: $color-neutral;
-  padding: 1em;
-  margin: 1em;
   max-width: 40rem;
+  @media screen and (min-width: 700px) {
+    margin: 0;
+  }
+  p {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+  p:last-child {
+    margin-bottom: 2rem;
+  }
+}
+:not(.stack) .section-text {
+  background-color: rgba($color-light, .8);
+  margin: 1em;
 }
 
 .point:not(.stack)::before {
@@ -210,26 +241,28 @@ a[href^="tel:"] {
 
 #hero {
   @include responsive-background('https://207.imgix.net/kids-in-forest.jpg', '&crop=entropy');
-  min-height: 80vh;
   background-size: cover;
-  background-position: 0 50%;
+  background-position: 20% 50%;
   display: flex;
   align-items: center;
+  min-height: 75vh;
   .section-text {
     background-color: transparent;
+    max-width: 30rem;
+    margin: 1rem 2rem;
   }
 }
 #mission.point::before {
-  @include illustration-background('https://207.imgix.net/kneeling.jpg', '&crop=entropy');
+  @include illustration-background('https://207.imgix.net/caleb-kneeling.jpg', '&crop=entropy');
 }
 #removal.point::before {
-  @include illustration-background('https://207.imgix.net/climbing.jpg', '&crop=entropy');
+  @include illustration-background('https://207.imgix.net/ropes.jpg', '&crop=entropy');
 }
 #pruning.point::before {
   @include illustration-background('https://207.imgix.net/climber.jpg', '&crop=entropy');
 }
 #year-round.point::before {
-  @include illustration-background('https://207.imgix.net/winter.jpg', '&crop=entropy');
+  @include illustration-background('https://207.imgix.net/phil.jpg', '&crop=entropy');
 }
 #green.point::before {
   @include illustration-background('https://207.imgix.net/fire-wood-1.jpg', '&crop=entropy');
@@ -240,4 +273,33 @@ a[href^="tel:"] {
 }
 #contact.point::before {
   @include illustration-background('https://207.imgix.net/customer.jpg', '&crop=entropy');
+}
+
+form {
+  margin: 0 2rem;
+}
+label {
+  display: block;
+  margin: 1rem 0 .4rem;
+  font-weight: bold; 
+}
+input, select, textarea {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: .4rem;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+textarea {
+  min-height: 200px;
+}
+input[type="file"] {
+  border: transparent;
+  padding: 0;
+}
+input[type="submit"] {
+  margin: 1rem 0 2rem;
+  background-color: $color-accent;
+  border: transparent;
+  color: $color-light;
 }
